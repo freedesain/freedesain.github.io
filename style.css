@@ -1,0 +1,412 @@
+/* RESET & VARIABLES */
+:root {
+  --primary-color: #00ff88; /* Hijau Neon */
+  --secondary-color: #1e1e1e; /* Abu gelap */
+  --bg-color: #121212; /* Hitam pekat */
+  --text-color: #ffffff;
+  --card-bg: #1f1f1f;
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 5%;
+  background-color: rgba(18, 18, 18, 0.95);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #333;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.logo span {
+  color: var(--primary-color);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin-left: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.nav-links a:hover {
+  color: var(--primary-color);
+}
+
+/* HERO SECTION */
+.hero {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("https://images.unsplash.com/photo-1522778119026-d647f0565c6a?auto=format&fit=crop&w=1920&q=80");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.hero h1 span {
+  color: var(--primary-color);
+  text-transform: uppercase;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #ccc;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-main {
+  padding: 12px 30px;
+  background-color: var(--primary-color);
+  color: #000;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 50px;
+  transition: var(--transition);
+}
+
+.btn-main:hover {
+  background-color: #fff;
+  transform: translateY(-3px);
+}
+
+/* COLLECTION & FILTER */
+.collection {
+  padding: 4rem 5%;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.filter-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 10px 20px;
+  background: transparent;
+  border: 2px solid #333;
+  color: #888;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #000;
+}
+
+/* CARD GRID */
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background-color: var(--card-bg);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: var(--transition);
+  border: 1px solid #333;
+  position: relative;
+  /* Animation for filtering */
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card.hide {
+  display: none;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 255, 136, 0.1);
+  border-color: var(--primary-color);
+}
+
+.card-image {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.card:hover .card-image img {
+  transform: scale(1.1);
+}
+
+.badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: var(--primary-color);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.card-info {
+  padding: 1.5rem;
+}
+
+.card-info h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-info p {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 1.5rem;
+}
+
+.btn-download {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  background-color: #333;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: var(--transition);
+}
+
+.btn-download:hover {
+  background-color: var(--primary-color);
+  color: #000;
+}
+
+/* FOOTER */
+footer {
+  background-color: #0a0a0a;
+  padding: 4rem 5% 1rem;
+  margin-top: 4rem;
+  border-top: 1px solid #333;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-section h3 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.socials a {
+  color: #fff;
+  margin-right: 15px;
+  font-size: 1.5rem;
+  transition: var(--transition);
+}
+
+.socials a:hover {
+  color: var(--primary-color);
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #222;
+  padding-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  .navbar {
+    flex-direction: column;
+  }
+  .nav-links {
+    margin-top: 1rem;
+  }
+  .nav-links li {
+    margin: 0 10px;
+  }
+}
+
+/* ... (Kode CSS sebelumnya tetap sama) ... -->
+
+/* =========================================
+   STYLE UNTUK IMAGE PREVIEW MODAL
+========================================= */
+
+/* 1. Mengubah kursor pada gambar di card agar user tahu bisa diklik */
+.card-image img {
+  cursor: zoom-in;
+}
+
+/* 2. Container Modal (Latar Belakang Gelap) */
+.modal {
+  display: none; /* Tersembunyi secara default */
+  position: fixed; /* Tetap di tempat saat discroll */
+  z-index: 2000; /* Harus lebih tinggi dari navbar (z-index: 1000) */
+  padding-top: 50px; /* Ruang di atas */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Jika gambar terlalu tinggi */
+  background-color: rgba(0, 0, 0, 0.92); /* Latar hitam transparan pekat */
+  /* Flexbox untuk menengahkan gambar */
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* 3. Gambar di dalam Modal */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 900px; /* Batas lebar maksimal */
+  max-height: 85vh; /* Batas tinggi maksimal agar tidak lewat layar */
+  object-fit: contain; /* Menjaga proporsi gambar */
+  border-radius: 8px;
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.2); /* Memberi efek glow hijau tipis */
+  animation-name: zoom; /* Efek animasi masuk */
+  animation-duration: 0.4s;
+}
+
+/* Animasi Zoom In saat modal muncul */
+@keyframes zoom {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* 4. Tombol Close (X) */
+.close-modal {
+  position: absolute;
+  top: 25px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  z-index: 2001;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+  color: var(--primary-color); /* Warna hijau neon saat dihover */
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 5. Caption (Opsional) */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+  font-size: 1.1rem;
+}
+
+/* Responsif untuk layar kecil */
+@media only screen and (max-width: 700px) {
+  .modal-content {
+    width: 95%;
+  }
+  .close-modal {
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+  }
+}
