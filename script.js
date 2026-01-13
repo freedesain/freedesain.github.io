@@ -77,3 +77,30 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+
+// SEARCH KATALOG
+const searchInput = document.getElementById("searchInput");
+const cards = document.querySelectorAll(".card");
+
+searchInput.addEventListener("keyup", function () {
+  const keyword = this.value.toLowerCase();
+
+  cards.forEach((card) => {
+    const title = card.querySelector("h3").innerText.toLowerCase();
+    const desc = card.querySelector("p").innerText.toLowerCase();
+    const badge = card.querySelector(".badge").innerText.toLowerCase();
+    const category = card.getAttribute("data-category").toLowerCase();
+
+    if (
+      title.includes(keyword) ||
+      desc.includes(keyword) ||
+      badge.includes(keyword) ||
+      category.includes(keyword)
+    ) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  });
+});
