@@ -410,3 +410,26 @@ footer {
     font-size: 30px;
   }
 }
+
+.search-container {
+  max-width: 400px;
+  margin: 20px auto;
+  position: relative;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 12px 40px 12px 15px;
+  border-radius: 30px;
+  border: 1px solid #ddd;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+}
+
+.search-container i {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+}
