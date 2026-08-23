@@ -3,59 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sistem SAKTI - Modern Financial Management Platform</title>
+    <title id="docTitle">Sistem SAKTI - Modern Financial Management Platform</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
 
     <script src="https://quge5.com/88/tag.min.js" data-zone="272569" async data-cfasync="false"></script>
 
     <style>
-      /* === CSS VARIABLES (FREE DESIGN - GLASSMORPHISM) === */
+      /* === CSS VARIABLES (FREEDESAIN - MODERN EMERALD/INDIGO GLASS) === */
       :root[data-theme="dark"] {
-        --bg-main: #09090e;
-        --bg-gradient:
-          radial-gradient(
-            circle at 15% 50%,
-            rgba(120, 0, 255, 0.2),
-            transparent 25%
-          ),
-          radial-gradient(
-            circle at 85% 30%,
-            rgba(255, 0, 128, 0.2),
-            transparent 25%
-          );
-        --card-bg: rgba(20, 20, 30, 0.4);
-        --text-color: #ffffff;
-        --text-muted: #a1a1aa;
-        --accent-primary: #ff2a85;
-        --accent-secondary: #8a2be2;
-        --border-color: rgba(255, 255, 255, 0.08);
-        --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-        --glass-blur: blur(12px);
+        --bg-main: #0b0f19;
+        --bg-gradient: radial-gradient(circle at 20% 20%, rgba(16, 185, 129, 0.15), transparent 40%),
+                        radial-gradient(circle at 80% 80%, rgba(99, 102, 241, 0.15), transparent 40%);
+        --card-bg: rgba(17, 24, 39, 0.65);
+        --text-color: #f9fafb;
+        --text-muted: #9ca3af;
+        --accent-primary: #10b981;
+        --accent-secondary: #6366f1;
+        --border-color: rgba(255, 255, 255, 0.1);
+        --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        --glass-blur: blur(16px);
       }
 
       :root[data-theme="light"] {
-        --bg-main: #f3f4f6;
-        --bg-gradient:
-          radial-gradient(
-            circle at 15% 50%,
-            rgba(255, 143, 179, 0.4),
-            transparent 35%
-          ),
-          radial-gradient(
-            circle at 85% 30%,
-            rgba(140, 122, 255, 0.4),
-            transparent 35%
-          );
-        --card-bg: rgba(255, 255, 255, 0.6);
-        --text-color: #1e1e24;
-        --text-muted: #6b7280;
-        --accent-primary: #ec4899;
-        --accent-secondary: #6366f1;
-        --border-color: rgba(255, 255, 255, 0.4);
-        --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+        --bg-main: #f8fafc;
+        --bg-gradient: radial-gradient(circle at 20% 20%, rgba(16, 185, 129, 0.12), transparent 40%),
+                        radial-gradient(circle at 80% 80%, rgba(99, 102, 241, 0.12), transparent 40%);
+        --card-bg: rgba(255, 255, 255, 0.75);
+        --text-color: #0f172a;
+        --text-muted: #64748b;
+        --accent-primary: #059669;
+        --accent-secondary: #4f46e5;
+        --border-color: rgba(226, 232, 240, 0.8);
+        --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
         --glass-blur: blur(16px);
       }
 
@@ -64,15 +46,11 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        transition:
-          background-color 0.4s ease,
-          color 0.4s ease,
-          border-color 0.4s ease,
-          box-shadow 0.4s ease;
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
       }
 
       body {
-        font-family: "Outfit", sans-serif;
+        font-family: "Plus Jakarta Sans", sans-serif;
         background-color: var(--bg-main);
         background-image: var(--bg-gradient);
         background-attachment: fixed;
@@ -81,13 +59,13 @@
         overflow-x: hidden;
       }
 
-      /* === CONTAINER & NAVBAR === */
       .container {
         max-width: 1100px;
         margin: 0 auto;
         padding: 0 24px;
       }
 
+      /* === HEADER === */
       header {
         display: flex;
         justify-content: space-between;
@@ -105,11 +83,7 @@
       .logo {
         font-size: 1.8rem;
         font-weight: 800;
-        background: linear-gradient(
-          135deg,
-          var(--accent-primary),
-          var(--accent-secondary)
-        );
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         display: flex;
@@ -118,11 +92,17 @@
         letter-spacing: -0.5px;
       }
 
-      .theme-btn {
+      .header-actions {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .theme-btn, .lang-select {
         background: var(--card-bg);
         border: 1px solid var(--border-color);
         color: var(--text-color);
-        padding: 10px 20px;
+        padding: 8px 16px;
         border-radius: 50px;
         cursor: pointer;
         font-weight: 600;
@@ -132,31 +112,28 @@
         gap: 8px;
         box-shadow: var(--shadow);
         backdrop-filter: var(--glass-blur);
+        outline: none;
       }
 
-      .theme-btn:hover {
-        transform: scale(1.05);
+      .theme-btn:hover, .lang-select:hover {
+        transform: translateY(-2px);
       }
 
       /* === HERO SECTION === */
       .hero {
         text-align: center;
-        padding: 60px 0;
+        padding: 60px 0 40px;
         position: relative;
       }
 
       .badge {
-        background: linear-gradient(
-          90deg,
-          rgba(236, 72, 153, 0.1),
-          rgba(99, 102, 241, 0.1)
-        );
-        color: var(--text-color);
-        border: 1px solid var(--accent-secondary);
+        background: linear-gradient(90deg, rgba(16, 185, 129, 0.1), rgba(99, 102, 241, 0.1));
+        color: var(--accent-primary);
+        border: 1px solid var(--border-color);
         padding: 8px 20px;
         border-radius: 50px;
-        font-size: 0.9rem;
-        font-weight: 600;
+        font-size: 0.85rem;
+        font-weight: 700;
         display: inline-block;
         margin-bottom: 24px;
         text-transform: uppercase;
@@ -164,27 +141,23 @@
       }
 
       .hero h1 {
-        font-size: 4rem;
+        font-size: 3.8rem;
         font-weight: 800;
-        line-height: 1.1;
+        line-height: 1.15;
         margin-bottom: 24px;
         letter-spacing: -1.5px;
       }
 
       .hero h1 span {
-        background: linear-gradient(
-          135deg,
-          var(--accent-primary),
-          var(--accent-secondary)
-        );
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
 
       .hero p {
-        font-size: 1.2rem;
+        font-size: 1.15rem;
         color: var(--text-muted);
-        max-width: 600px;
+        max-width: 650px;
         margin: 0 auto 40px;
       }
 
@@ -193,54 +166,49 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: 24px;
-        margin: 60px 0;
+        margin: 40px 0 60px;
       }
 
       .stat-card {
         background: var(--card-bg);
         border: 1px solid var(--border-color);
-        border-radius: 24px;
-        padding: 32px;
+        border-radius: 20px;
+        padding: 28px;
         text-align: center;
         backdrop-filter: var(--glass-blur);
-        -webkit-backdrop-filter: var(--glass-blur);
         box-shadow: var(--shadow);
         transition: transform 0.3s ease;
       }
 
       .stat-card:hover {
-        transform: translateY(-10px);
+        transform: translateY(-6px);
       }
 
       .stat-number {
-        font-size: 3rem;
+        font-size: 2.8rem;
         font-weight: 800;
-        background: linear-gradient(
-          135deg,
-          var(--accent-primary),
-          var(--accent-secondary)
-        );
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        margin-bottom: 8px;
+        margin-bottom: 6px;
       }
 
       .stat-label {
         color: var(--text-muted);
-        font-size: 1rem;
+        font-size: 0.95rem;
         font-weight: 600;
       }
 
-      /* === INTERACTIVE TABS === */
+      /* === TABS === */
       .tabs-section {
-        margin: 80px 0;
+        margin: 60px 0;
       }
 
       .tabs-header {
         display: flex;
         justify-content: center;
-        gap: 16px;
-        margin-bottom: 40px;
+        gap: 12px;
+        margin-bottom: 32px;
         flex-wrap: wrap;
       }
 
@@ -248,12 +216,12 @@
         background: var(--card-bg);
         border: 1px solid var(--border-color);
         color: var(--text-muted);
-        padding: 14px 28px;
+        padding: 12px 24px;
         border-radius: 50px;
         cursor: pointer;
         font-weight: 600;
         font-family: inherit;
-        font-size: 1rem;
+        font-size: 0.95rem;
         backdrop-filter: var(--glass-blur);
       }
 
@@ -262,79 +230,58 @@
       }
 
       .tab-btn.active {
-        background: linear-gradient(
-          135deg,
-          var(--accent-primary),
-          var(--accent-secondary)
-        );
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
         color: #ffffff;
-        border: none;
-        box-shadow: 0 10px 20px rgba(236, 72, 153, 0.3);
+        border-color: transparent;
+        box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
       }
 
       .tab-content {
         background: var(--card-bg);
         border: 1px solid var(--border-color);
-        border-radius: 32px;
-        padding: 48px;
+        border-radius: 24px;
+        padding: 40px;
         display: none;
         backdrop-filter: var(--glass-blur);
-        -webkit-backdrop-filter: var(--glass-blur);
         box-shadow: var(--shadow);
-        animation: slideUp 0.5s ease forwards;
+        animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       }
 
       .tab-content.active {
         display: block;
       }
 
-      .tab-content h3 {
-        font-size: 1.8rem;
-        margin-bottom: 12px;
-      }
-
-      .tab-content p {
-        font-size: 1.1rem;
-      }
-
-      /* === CALCULATOR / SIMULATION WIDGET === */
+      /* === CALCULATOR === */
       .calc-box {
         background: var(--card-bg);
         border: 1px solid var(--border-color);
-        border-radius: 32px;
-        padding: 48px;
-        margin: 80px 0;
+        border-radius: 24px;
+        padding: 40px;
+        margin: 60px 0;
         backdrop-filter: var(--glass-blur);
-        -webkit-backdrop-filter: var(--glass-blur);
         box-shadow: var(--shadow);
       }
 
       .calc-header {
         text-align: center;
-        margin-bottom: 40px;
-      }
-
-      .calc-header h2 {
-        font-size: 2.2rem;
-        margin-bottom: 10px;
+        margin-bottom: 32px;
       }
 
       .slider-group {
-        margin-bottom: 32px;
+        margin-bottom: 28px;
       }
 
       .slider-label {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 16px;
+        margin-bottom: 12px;
         font-weight: 600;
-        font-size: 1.1rem;
       }
 
       input[type="range"] {
         -webkit-appearance: none;
         width: 100%;
-        height: 12px;
+        height: 8px;
         border-radius: 10px;
         background: rgba(150, 150, 150, 0.2);
         outline: none;
@@ -342,60 +289,49 @@
 
       input[type="range"]::-webkit-slider-thumb {
         -webkit-appearance: none;
-        appearance: none;
-        width: 24px;
-        height: 24px;
+        width: 22px;
+        height: 22px;
         border-radius: 50%;
-        background: var(--accent-secondary);
+        background: var(--accent-primary);
         cursor: pointer;
-        box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+        box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
       }
 
       .calc-result {
-        background: rgba(0, 0, 0, 0.05);
+        background: rgba(0, 0, 0, 0.03);
         border: 1px dashed var(--border-color);
-        padding: 30px;
-        border-radius: 24px;
+        padding: 24px;
+        border-radius: 16px;
         text-align: center;
       }
 
       .result-value {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
         font-weight: 800;
-        background: linear-gradient(
-          135deg,
-          var(--accent-primary),
-          var(--accent-secondary)
-        );
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        margin: 10px 0;
+        margin: 8px 0;
       }
 
       /* === BUTTONS & MODAL === */
       .cta-btn {
-        background: linear-gradient(
-          135deg,
-          var(--accent-primary),
-          var(--accent-secondary)
-        );
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
         color: white;
-        padding: 16px 40px;
+        padding: 14px 36px;
         border: none;
         border-radius: 50px;
         font-weight: 700;
-        font-size: 1.1rem;
+        font-size: 1rem;
         font-family: inherit;
         cursor: pointer;
-        box-shadow: 0 10px 25px rgba(236, 72, 153, 0.4);
-        transition:
-          transform 0.3s ease,
-          box-shadow 0.3s ease;
+        box-shadow: 0 8px 20px rgba(16, 185, 129, 0.35);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
       }
 
       .cta-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 15px 35px rgba(236, 72, 153, 0.5);
+        transform: translateY(-2px);
+        box-shadow: 0 12px 25px rgba(16, 185, 129, 0.45);
       }
 
       .modal-overlay {
@@ -404,7 +340,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.4);
+        background: rgba(0, 0, 0, 0.5);
         backdrop-filter: blur(8px);
         display: none;
         justify-content: center;
@@ -415,245 +351,318 @@
       .modal {
         background: var(--card-bg);
         border: 1px solid var(--border-color);
-        padding: 40px;
-        border-radius: 32px;
-        max-width: 500px;
+        padding: 36px;
+        border-radius: 24px;
+        max-width: 480px;
         width: 90%;
         box-shadow: var(--shadow);
         backdrop-filter: var(--glass-blur);
         position: relative;
         text-align: center;
-        animation: scaleIn 0.3s ease;
+        animation: scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .close-modal {
         position: absolute;
-        top: 20px;
-        right: 24px;
-        font-size: 2rem;
+        top: 16px;
+        right: 20px;
+        font-size: 1.8rem;
         cursor: pointer;
         color: var(--text-muted);
-        line-height: 1;
       }
 
       footer {
         text-align: center;
-        padding: 40px 0;
+        padding: 30px 0;
         color: var(--text-muted);
-        margin-top: 40px;
-        font-weight: 600;
+        font-weight: 500;
+        font-size: 0.9rem;
       }
 
-      /* === ANIMATIONS === */
       @keyframes slideUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
       }
 
       @keyframes scaleIn {
-        from {
-          opacity: 0;
-          transform: scale(0.9);
-        }
-        to {
-          opacity: 1;
-          transform: scale(1);
-        }
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
       }
 
       @media (max-width: 768px) {
-        .hero h1 {
-          font-size: 2.5rem;
-        }
-        .tab-content {
-          padding: 32px;
-        }
-        .calc-box {
-          padding: 32px;
-        }
+        .hero h1 { font-size: 2.4rem; }
+        .tab-content, .calc-box { padding: 24px; }
       }
 
-      div[data-banner-id="2025966"] {
-    display: grid;
-    place-items: center; /* Ketengah secara horizontal & vertikal sekaligus */
-}
-      div[data-banner-id="2025963"] {
-    display: grid;
-    place-items: center; /* Ketengah secara horizontal & vertikal sekaligus */
-}
+      div[data-banner-id="2025966"], div[data-banner-id="2025963"] {
+        display: grid;
+        place-items: center;
+      }
     </style>
   </head>
   <body>
     <div class="container">
-      <!-- HEADER -->
       <header>
         <div class="logo">⚡ SAKTI.</div>
-        <button class="theme-btn" id="themeToggle">🌙 Gelap</button>
+        <div class="header-actions">
+          <select class="lang-select" id="langSelect">
+            <option value="id">🇮🇩 ID</option>
+            <option value="en">🇺🇸 EN</option>
+          </select>
+          <button class="theme-btn" id="themeToggle">🌙 Gelap</button>
+        </div>
       </header>
 
-      <!-- HERO SECTION -->
       <section class="hero">
         <div data-banner-id="2025963"></div>
         <div data-banner-id="2025966"></div>
-        <span class="badge">Platform Pengelolaan Terpadu</span>
-        <h1>
+        <span class="badge" id="txtBadge">Platform Pengelolaan Terpadu</span>
+        <h1 id="txtHeroTitle">
           Harmonisasi Keuangan <br />
           <span>Dalam Satu Sentuhan</span>
         </h1>
-        <p>
-          Rancang, laksanakan, dan laporkan anggaran instansi Anda dengan
-          antarmuka yang intuitif, presisi, dan sepenuhnya terenkripsi.
+        <p id="txtHeroDesc">
+          Rancang, laksanakan, dan laporkan anggaran instansi Anda dengan antarmuka yang intuitif, presisi, dan sepenuhnya terenkripsi.
         </p>
         <button class="cta-btn" id="openModal">Eksplorasi Arsitektur</button>
       </section>
 
-      <!-- LIVE COUNTER STATS -->
       <div class="stats-grid">
         <div class="stat-card">
           <div class="stat-number" data-target="100">0</div>
-          <div class="stat-label">Tingkat Integrasi (%)</div>
+          <div class="stat-label" id="lblStat1">Tingkat Integrasi (%)</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" data-target="24">0</div>
-          <div class="stat-label">Aksesabilitas (Jam)</div>
+          <div class="stat-label" id="lblStat2">Aksesabilitas (Jam)</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" data-target="99">0</div>
-          <div class="stat-label">Akurasi Pelaporan (%)</div>
+          <div class="stat-label" id="lblStat3">Akurasi Pelaporan (%)</div>
         </div>
       </div>
 
-      
-
-      <!-- INTERACTIVE MODULE TABS -->
       <section class="tabs-section">
         <div class="tabs-header">
-          <button class="tab-btn active" onclick="switchTab('anggaran')">
-            Penganggaran
-          </button>
-          <button class="tab-btn" onclick="switchTab('komitmen')">
-            Komitmen
-          </button>
-          <button class="tab-btn" onclick="switchTab('pembayaran')">
-            Pembayaran
-          </button>
-          <button class="tab-btn" onclick="switchTab('pelaporan')">
-            Pelaporan (GL)
-          </button>
+          <button class="tab-btn active" onclick="switchTab('anggaran')" id="btnTab1">Penganggaran</button>
+          <button class="tab-btn" onclick="switchTab('komitmen')" id="btnTab2">Komitmen</button>
+          <button class="tab-btn" onclick="switchTab('pembayaran')" id="btnTab3">Pembayaran</button>
+          <button class="tab-btn" onclick="switchTab('pelaporan')" id="btnTab4">Pelaporan (GL)</button>
         </div>
 
         <div id="anggaran" class="tab-content active">
-          <h3>📝 Modul Penganggaran</h3>
-          <p style="margin-top: 12px; color: var(--text-muted)">
-            Merancang Rencana Kerja dan Anggaran (RKA) dengan validasi otomatis
-            tingkat tinggi. Meminimalisir kesalahan manusia dalam menentukan
-            pagu anggaran instansi.
+          <h3 id="titleTab1">📝 Modul Penganggaran</h3>
+          <p id="descTab1" style="margin-top: 12px; color: var(--text-muted)">
+            Merancang Rencana Kerja dan Anggaran (RKA) dengan validasi otomatis tingkat tinggi. Meminimalisir kesalahan manusia dalam menentukan pagu anggaran instansi.
           </p>
         </div>
 
         <div id="komitmen" class="tab-content">
-          <h3>🤝 Modul Komitmen & Supplier</h3>
-          <p style="margin-top: 12px; color: var(--text-muted)">
-            Sistem pencatatan terpusat untuk data Supplier dan Manajemen
-            Kontrak. Memastikan proses *procurement* berjalan pada jalur legal
-            yang tepat sebelum pencairan.
+          <h3 id="titleTab2">🤝 Modul Komitmen & Supplier</h3>
+          <p id="descTab2" style="margin-top: 12px; color: var(--text-muted)">
+            Sistem pencatatan terpusat untuk data Supplier dan Manajemen Kontrak. Memastikan proses procurement berjalan pada jalur legal yang tepat.
           </p>
         </div>
 
         <div id="pembayaran" class="tab-content">
-          <h3>💳 Modul Pembayaran (SPP/SPM)</h3>
-          <p style="margin-top: 12px; color: var(--text-muted)">
-            Alur pengajuan SPP hingga SPM tersertifikasi digital. Dilengkapi
-            verifikasi *One-Time Password* (OTP) lapis ganda untuk keamanan
-            ekstra.
+          <h3 id="titleTab3">💳 Modul Pembayaran (SPP/SPM)</h3>
+          <p id="descTab3" style="margin-top: 12px; color: var(--text-muted)">
+            Alur pengajuan SPP hingga SPM tersertifikasi digital. Dilengkapi verifikasi One-Time Password (OTP) lapis ganda.
           </p>
         </div>
 
         <div id="pelaporan" class="tab-content">
-          <h3>📊 Modul Akuntansi & Pelaporan</h3>
-          <p style="margin-top: 12px; color: var(--text-muted)">
-            Engine pencatatan *General Ledger* akrual yang merangkum Neraca,
-            LPE, LO, dan LRA secara *real-time* di ujung jari Anda.
+          <h3 id="titleTab4">📊 Modul Akuntansi & Pelaporan</h3>
+          <p id="descTab4" style="margin-top: 12px; color: var(--text-muted)">
+            Engine pencatatan General Ledger akrual yang merangkum Neraca, LPE, LO, dan LRA secara real-time.
           </p>
         </div>
       </section>
 
-      <!-- INTERACTIVE CALCULATOR / SIMULATION WIDGET -->
       <section class="calc-box">
         <div class="calc-header">
-          <h2>Kalkulator Efisiensi Waktu</h2>
-          <p style="color: var(--text-muted)">
-            Geser tuas di bawah untuk melihat potensi penghematan waktu tim
-            Anda.
+          <h2 id="calcTitle">Kalkulator Efisiensi Waktu</h2>
+          <p id="calcSub" style="color: var(--text-muted)">
+            Geser tuas di bawah untuk melihat potensi penghematan waktu tim Anda.
           </p>
         </div>
 
         <div class="slider-group">
           <div class="slider-label">
-            <span>Volume Transaksi (Per Bulan):</span>
-            <span id="txValue" style="color: var(--accent-primary)"
-              >150 Transaksi</span
-            >
+            <span id="lblTxVolume">Volume Transaksi (Per Bulan):</span>
+            <span id="txValue" style="color: var(--accent-primary)">150 Transaksi</span>
           </div>
           <input type="range" id="txRange" min="10" max="1000" value="150" />
         </div>
 
         <div class="calc-result">
-          <div style="color: var(--text-muted); font-size: 1rem">
+          <div id="lblTimeNeeded" style="color: var(--text-muted); font-size: 0.95rem">
             Waktu Operasional yang Dibutuhkan:
           </div>
           <div class="result-value" id="hoursSaved">30.0 Jam</div>
-          <div
-            style="
-              font-size: 0.9rem;
-              font-weight: 600;
-              color: var(--accent-secondary);
-              margin-top: 8px;
-            "
-          >
+          <div id="lblProdBoost" style="font-size: 0.85rem; font-weight: 600; color: var(--accent-secondary); margin-top: 8px;">
             ✨ Meningkatkan produktivitas tim hingga 80%
           </div>
         </div>
       </section>
 
-      <!-- FOOTER -->
       <footer>
-        <p>&copy; 2026 SAKTI Redesigned. The Future of Financial UI.</p>
+        <p>&copy; 2026 SAKTI Redesigned. FreeDesain UI Theme.</p>
       </footer>
     </div>
 
-    <!-- MODAL POPUP -->
     <div class="modal-overlay" id="modalOverlay">
       <div class="modal">
         <span class="close-modal" id="closeModal">&times;</span>
-        <h3 style="margin-bottom: 16px; font-size: 1.8rem">Arsitektur Cloud</h3>
-        <p
-          style="
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            margin-bottom: 24px;
-          "
-        >
-          SAKTI Redesign menggunakan infrastruktur serverless dengan kapabilitas
-          <i>auto-scaling</i>, enkripsi AES-256 end-to-end, dan sistem basis
-          data terdistribusi yang memastikan *Zero Downtime* selama akhir tahun
-          anggaran.
+        <h3 id="modalTitle" style="margin-bottom: 16px; font-size: 1.6rem">Arsitektur Cloud</h3>
+        <p id="modalDesc" style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px;">
+          SAKTI Redesign menggunakan infrastruktur serverless dengan kapabilitas auto-scaling, enkripsi AES-256 end-to-end, dan zero downtime.
         </p>
-        <button class="cta-btn" style="width: 100%" onclick="closeModalFunc()">
+        <button class="cta-btn" id="modalCloseBtn" style="width: 100%" onclick="closeModalFunc()">
           Tutup Informasi
         </button>
       </div>
     </div>
 
-    <!-- JAVASCRIPT -->
     <script>
-      // 1. THEME SWITCHER
+      // 1. DICTIONARY MULTI-BAHASA (i18n)
+      const i18n = {
+        id: {
+          docTitle: "Sistem SAKTI - Platform Manajemen Keuangan Modern",
+          themeDark: "🌙 Gelap",
+          themeLight: "☀️ Terang",
+          txtBadge: "Platform Pengelolaan Terpadu",
+          txtHeroTitle: "Harmonisasi Keuangan <br /><span>Dalam Satu Sentuhan</span>",
+          txtHeroDesc: "Rancang, laksanakan, dan laporkan anggaran instansi Anda dengan antarmuka yang intuitif, presisi, dan sepenuhnya terenkripsi.",
+          openModal: "Eksplorasi Arsitektur",
+          lblStat1: "Tingkat Integrasi (%)",
+          lblStat2: "Aksesabilitas (Jam)",
+          lblStat3: "Akurasi Pelaporan (%)",
+          btnTab1: "Penganggaran",
+          btnTab2: "Komitmen",
+          btnTab3: "Pembayaran",
+          btnTab4: "Pelaporan (GL)",
+          titleTab1: "📝 Modul Penganggaran",
+          descTab1: "Merancang Rencana Kerja dan Anggaran (RKA) dengan validasi otomatis tingkat tinggi. Meminimalisir kesalahan manusia dalam menentukan pagu anggaran instansi.",
+          titleTab2: "🤝 Modul Komitmen & Supplier",
+          descTab2: "Sistem pencatatan terpusat untuk data Supplier dan Manajemen Kontrak. Memastikan proses procurement berjalan pada jalur legal yang tepat.",
+          titleTab3: "💳 Modul Pembayaran (SPP/SPM)",
+          descTab3: "Alur pengajuan SPP hingga SPM tersertifikasi digital. Dilengkapi verifikasi One-Time Password (OTP) lapis ganda.",
+          titleTab4: "📊 Modul Akuntansi & Pelaporan",
+          descTab4: "Engine pencatatan General Ledger akrual yang merangkum Neraca, LPE, LO, dan LRA secara real-time.",
+          calcTitle: "Kalkulator Efisiensi Waktu",
+          calcSub: "Geser tuas di bawah untuk melihat potensi penghematan waktu tim Anda.",
+          lblTxVolume: "Volume Transaksi (Per Bulan):",
+          unitTx: "Transaksi",
+          lblTimeNeeded: "Waktu Operasional yang Dibutuhkan:",
+          unitHours: "Jam",
+          lblProdBoost: "✨ Meningkatkan produktivitas tim hingga 80%",
+          modalTitle: "Arsitektur Cloud",
+          modalDesc: "SAKTI Redesign menggunakan infrastruktur serverless dengan kapabilitas auto-scaling, enkripsi AES-256 end-to-end, dan zero downtime.",
+          modalCloseBtn: "Tutup Informasi"
+        },
+        en: {
+          docTitle: "SAKTI System - Modern Financial Management Platform",
+          themeDark: "🌙 Dark",
+          themeLight: "☀️ Light",
+          txtBadge: "Integrated Management Platform",
+          txtHeroTitle: "Financial Harmonization <br /><span>In One Touch</span>",
+          txtHeroDesc: "Design, execute, and report your agency budget with an intuitive, precise, and fully encrypted interface.",
+          openModal: "Explore Architecture",
+          lblStat1: "Integration Level (%)",
+          lblStat2: "Accessibility (Hours)",
+          lblStat3: "Reporting Accuracy (%)",
+          btnTab1: "Budgeting",
+          btnTab2: "Commitment",
+          btnTab3: "Payment",
+          btnTab4: "Reporting (GL)",
+          titleTab1: "📝 Budgeting Module",
+          descTab1: "Design Work Plans and Budgets (RKA) with high-level automated validation. Minimize human errors in setting agency budget ceilings.",
+          titleTab2: "🤝 Commitment & Supplier Module",
+          descTab2: "Centralized record system for Supplier data and Contract Management. Ensures procurement processes stay on proper legal tracks.",
+          titleTab3: "💳 Payment Module (SPP/SPM)",
+          descTab3: "Digital certified workflow from payment request to payment order. Features multi-layer One-Time Password (OTP) verification.",
+          titleTab4: "📊 Accounting & Reporting Module",
+          descTab4: "Accrual General Ledger engine generating Balance Sheet, LPE, LO, and LRA reports in real-time at your fingertips.",
+          calcTitle: "Time Efficiency Calculator",
+          calcSub: "Slide the bar below to see your team's potential time savings.",
+          lblTxVolume: "Transaction Volume (Per Month):",
+          unitTx: "Transactions",
+          lblTimeNeeded: "Required Operational Time:",
+          unitHours: "Hours",
+          lblProdBoost: "✨ Increases team productivity by up to 80%",
+          modalTitle: "Cloud Architecture",
+          modalDesc: "SAKTI Redesign operates on serverless infrastructure with auto-scaling capabilities, AES-256 end-to-end encryption, and zero downtime.",
+          modalCloseBtn: "Close Information"
+        }
+      };
+
+      let currentLang = "id";
+
+      function applyTranslations(lang) {
+        currentLang = lang;
+        const dict = i18n[lang] || i18n.id;
+        document.documentElement.lang = lang;
+        
+        document.getElementById("docTitle").innerText = dict.docTitle;
+        document.getElementById("txtBadge").innerText = dict.txtBadge;
+        document.getElementById("txtHeroTitle").innerHTML = dict.txtHeroTitle;
+        document.getElementById("txtHeroDesc").innerText = dict.txtHeroDesc;
+        document.getElementById("openModal").innerText = dict.openModal;
+        document.getElementById("lblStat1").innerText = dict.lblStat1;
+        document.getElementById("lblStat2").innerText = dict.lblStat2;
+        document.getElementById("lblStat3").innerText = dict.lblStat3;
+        document.getElementById("btnTab1").innerText = dict.btnTab1;
+        document.getElementById("btnTab2").innerText = dict.btnTab2;
+        document.getElementById("btnTab3").innerText = dict.btnTab3;
+        document.getElementById("btnTab4").innerText = dict.btnTab4;
+        document.getElementById("titleTab1").innerText = dict.titleTab1;
+        document.getElementById("descTab1").innerText = dict.descTab1;
+        document.getElementById("titleTab2").innerText = dict.titleTab2;
+        document.getElementById("descTab2").innerText = dict.descTab2;
+        document.getElementById("titleTab3").innerText = dict.titleTab3;
+        document.getElementById("descTab3").innerText = dict.descTab3;
+        document.getElementById("titleTab4").innerText = dict.titleTab4;
+        document.getElementById("descTab4").innerText = dict.descTab4;
+        document.getElementById("calcTitle").innerText = dict.calcTitle;
+        document.getElementById("calcSub").innerText = dict.calcSub;
+        document.getElementById("lblTxVolume").innerText = dict.lblTxVolume;
+        document.getElementById("lblTimeNeeded").innerText = dict.lblTimeNeeded;
+        document.getElementById("lblProdBoost").innerText = dict.lblProdBoost;
+        document.getElementById("modalTitle").innerText = dict.modalTitle;
+        document.getElementById("modalDesc").innerText = dict.modalDesc;
+        document.getElementById("modalCloseBtn").innerText = dict.modalCloseBtn;
+
+        // Refresh calculator units
+        updateCalc();
+
+        // Update Theme Button Text
+        const theme = document.documentElement.getAttribute("data-theme");
+        document.getElementById("themeToggle").innerHTML = theme === "dark" ? dict.themeLight : dict.themeDark;
+      }
+
+      // 2. OTOMATISASI DETEKSI LOKASI/BAHASA CLIENT
+      async function autoDetectLocationAndLang() {
+        try {
+          const res = await fetch("https://ipapi.co/json/");
+          const data = await res.json();
+          const countryCode = data.country_code;
+          const detectedLang = countryCode === "ID" ? "id" : "en";
+          document.getElementById("langSelect").value = detectedLang;
+          applyTranslations(detectedLang);
+        } catch (err) {
+          // Fallback berdasarkan browser language
+          const browserLang = navigator.language.startsWith("id") ? "id" : "en";
+          document.getElementById("langSelect").value = browserLang;
+          applyTranslations(browserLang);
+        }
+      }
+
+      document.getElementById("langSelect").addEventListener("change", (e) => {
+        applyTranslations(e.target.value);
+      });
+
+      // 3. THEME SWITCHER
       const themeToggleBtn = document.getElementById("themeToggle");
       const htmlTag = document.documentElement;
 
@@ -661,29 +670,24 @@
         const currentTheme = htmlTag.getAttribute("data-theme");
         const newTheme = currentTheme === "dark" ? "light" : "dark";
         htmlTag.setAttribute("data-theme", newTheme);
-        themeToggleBtn.innerHTML =
-          newTheme === "dark" ? "☀️ Terang" : "🌙 Gelap";
+        const dict = i18n[currentLang];
+        themeToggleBtn.innerHTML = newTheme === "dark" ? dict.themeLight : dict.themeDark;
       });
 
-      // 2. TAB SWITCHING FUNCTIONALITY
+      // 4. TAB SWITCHING
       function switchTab(tabId) {
-        document
-          .querySelectorAll(".tab-btn")
-          .forEach((btn) => btn.classList.remove("active"));
-        document
-          .querySelectorAll(".tab-content")
-          .forEach((content) => content.classList.remove("active"));
-
+        document.querySelectorAll(".tab-btn").forEach((btn) => btn.classList.remove("active"));
+        document.querySelectorAll(".tab-content").forEach((content) => content.classList.remove("active"));
         event.currentTarget.classList.add("active");
         document.getElementById(tabId).classList.add("active");
       }
 
-      // 3. STATS COUNTER ANIMATION
+      // 5. STATS COUNTER ANIMATION
       const counters = document.querySelectorAll(".stat-number");
       counters.forEach((counter) => {
         const target = +counter.getAttribute("data-target");
         let count = 0;
-        const speed = target / 50;
+        const speed = target / 40;
 
         const updateCount = () => {
           count += speed;
@@ -697,19 +701,22 @@
         updateCount();
       });
 
-      // 4. INTERACTIVE SIMULATION CALCULATOR
+      // 6. CALCULATOR WIDGET
       const txRange = document.getElementById("txRange");
       const txValue = document.getElementById("txValue");
       const hoursSaved = document.getElementById("hoursSaved");
 
-      txRange.addEventListener("input", (e) => {
-        const val = e.target.value;
-        txValue.innerText = `${val} Transaksi`;
+      function updateCalc() {
+        const val = txRange.value;
+        const dict = i18n[currentLang];
+        txValue.innerText = `${val} ${dict.unitTx}`;
         const saved = (val * 0.2).toFixed(1);
-        hoursSaved.innerText = `${saved} Jam`;
-      });
+        hoursSaved.innerText = `${saved} ${dict.unitHours}`;
+      }
 
-      // 5. MODAL LOGIC
+      txRange.addEventListener("input", updateCalc);
+
+      // 7. MODAL LOGIC
       const modalOverlay = document.getElementById("modalOverlay");
       const openModalBtn = document.getElementById("openModal");
       const closeModalBtn = document.getElementById("closeModal");
@@ -726,11 +733,14 @@
       modalOverlay.addEventListener("click", (e) => {
         if (e.target === modalOverlay) closeModalFunc();
       });
+
+      // Jalankan deteksi bahasa saat awal dimuat
+      autoDetectLocationAndLang();
     </script>
     <script type="text/javascript">
-    aclib.runAutoTag({
+      aclib.runAutoTag({
         zoneId: 'cwt97m54zb',
-    });
-</script>
+      });
+    </script>
   </body>
 </html>
