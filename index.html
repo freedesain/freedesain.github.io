@@ -1,746 +1,500 @@
-<!doctype html>
-<html lang="id" data-theme="light">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title id="docTitle">Sistem SAKTI - Modern Financial Management Platform</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-
-    <script src="https://quge5.com/88/tag.min.js" data-zone="272569" async data-cfasync="false"></script>
-
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>freedesain.github.io | AI Image Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+   <script src="https://quge5.com/88/tag.min.js" data-zone="272569" async data-cfasync="false"></script>
     <style>
-      /* === CSS VARIABLES (FREEDESAIN - MODERN EMERALD/INDIGO GLASS) === */
-      :root[data-theme="dark"] {
-        --bg-main: #0b0f19;
-        --bg-gradient: radial-gradient(circle at 20% 20%, rgba(16, 185, 129, 0.15), transparent 40%),
-                        radial-gradient(circle at 80% 80%, rgba(99, 102, 241, 0.15), transparent 40%);
-        --card-bg: rgba(17, 24, 39, 0.65);
-        --text-color: #f9fafb;
-        --text-muted: #9ca3af;
-        --accent-primary: #10b981;
-        --accent-secondary: #6366f1;
-        --border-color: rgba(255, 255, 255, 0.1);
-        --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-        --glass-blur: blur(16px);
-      }
+        :root {
+            --bg-color: #0f111a;
+            --panel-bg: rgba(25, 28, 41, 0.7);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --accent: #8b5cf6;
+            --accent-hover: #7c3aed;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --glass-blur: blur(12px);
+        }
 
-      :root[data-theme="light"] {
-        --bg-main: #f8fafc;
-        --bg-gradient: radial-gradient(circle at 20% 20%, rgba(16, 185, 129, 0.12), transparent 40%),
-                        radial-gradient(circle at 80% 80%, rgba(99, 102, 241, 0.12), transparent 40%);
-        --card-bg: rgba(255, 255, 255, 0.75);
-        --text-color: #0f172a;
-        --text-muted: #64748b;
-        --accent-primary: #059669;
-        --accent-secondary: #4f46e5;
-        --border-color: rgba(226, 232, 240, 0.8);
-        --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-        --glass-blur: blur(16px);
-      }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
 
-      /* === RESET & BASE STYLES === */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-      }
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(139, 92, 246, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.1), transparent 25%);
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
 
-      body {
-        font-family: "Plus Jakarta Sans", sans-serif;
-        background-color: var(--bg-main);
-        background-image: var(--bg-gradient);
-        background-attachment: fixed;
-        color: var(--text-color);
-        line-height: 1.6;
-        overflow-x: hidden;
-      }
+        /* === HEADER === */
+        header {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(15, 17, 26, 0.8);
+            backdrop-filter: var(--glass-blur);
+            z-index: 10;
+        }
 
-      .container {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 0 24px;
-      }
+        .brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-      /* === HEADER === */
-      header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px 0;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        backdrop-filter: var(--glass-blur);
-        -webkit-backdrop-filter: var(--glass-blur);
-        border-bottom: 1px solid var(--border-color);
-        margin-bottom: 40px;
-      }
+        .brand span {
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-      .logo {
-        font-size: 1.8rem;
-        font-weight: 800;
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        letter-spacing: -0.5px;
-      }
+        .header-actions button {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-      .header-actions {
-        display: flex;
-        gap: 12px;
-        align-items: center;
-      }
+        .header-actions button:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
 
-      .theme-btn, .lang-select {
-        background: var(--card-bg);
-        border: 1px solid var(--border-color);
-        color: var(--text-color);
-        padding: 8px 16px;
-        border-radius: 50px;
-        cursor: pointer;
-        font-weight: 600;
-        font-family: inherit;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        box-shadow: var(--shadow);
-        backdrop-filter: var(--glass-blur);
-        outline: none;
-      }
+        /* === MAIN LAYOUT === */
+        .app-container {
+            display: flex;
+            flex: 1;
+            height: calc(100vh - 70px);
+        }
 
-      .theme-btn:hover, .lang-select:hover {
-        transform: translateY(-2px);
-      }
+        /* === SIDEBAR (CONTROLS) === */
+        .sidebar {
+            width: 350px;
+            background: var(--panel-bg);
+            backdrop-filter: var(--glass-blur);
+            border-right: 1px solid var(--border-color);
+            padding: 24px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
 
-      /* === HERO SECTION === */
-      .hero {
-        text-align: center;
-        padding: 60px 0 40px;
-        position: relative;
-      }
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
 
-      .badge {
-        background: linear-gradient(90deg, rgba(16, 185, 129, 0.1), rgba(99, 102, 241, 0.1));
-        color: var(--accent-primary);
-        border: 1px solid var(--border-color);
-        padding: 8px 20px;
-        border-radius: 50px;
-        font-size: 0.85rem;
-        font-weight: 700;
-        display: inline-block;
-        margin-bottom: 24px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
+        .control-group label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
 
-      .hero h1 {
-        font-size: 3.8rem;
-        font-weight: 800;
-        line-height: 1.15;
-        margin-bottom: 24px;
-        letter-spacing: -1.5px;
-      }
+        /* Inputs */
+        textarea, input[type="text"] {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 12px;
+            color: var(--text-main);
+            resize: none;
+            outline: none;
+            transition: border-color 0.3s;
+        }
 
-      .hero h1 span {
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
+        textarea:focus, input[type="text"]:focus {
+            border-color: var(--accent);
+        }
 
-      .hero p {
-        font-size: 1.15rem;
-        color: var(--text-muted);
-        max-width: 650px;
-        margin: 0 auto 40px;
-      }
+        /* Theme Selector */
+        .theme-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
 
-      /* === STATS COUNTER === */
-      .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 24px;
-        margin: 40px 0 60px;
-      }
+        .theme-card {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: 0.2s;
+        }
 
-      .stat-card {
-        background: var(--card-bg);
-        border: 1px solid var(--border-color);
-        border-radius: 20px;
-        padding: 28px;
-        text-align: center;
-        backdrop-filter: var(--glass-blur);
-        box-shadow: var(--shadow);
-        transition: transform 0.3s ease;
-      }
+        .theme-card:hover {
+            background: rgba(139, 92, 246, 0.1);
+        }
 
-      .stat-card:hover {
-        transform: translateY(-6px);
-      }
+        .theme-card.active {
+            border-color: var(--accent);
+            background: rgba(139, 92, 246, 0.2);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+        }
 
-      .stat-number {
-        font-size: 2.8rem;
-        font-weight: 800;
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin-bottom: 6px;
-      }
+        /* Sliders */
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            outline: none;
+        }
 
-      .stat-label {
-        color: var(--text-muted);
-        font-size: 0.95rem;
-        font-weight: 600;
-      }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+        }
 
-      /* === TABS === */
-      .tabs-section {
-        margin: 60px 0;
-      }
+        /* Buttons */
+        .btn-generate {
+            background: linear-gradient(135deg, var(--accent), #3b82f6);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: auto;
+        }
 
-      .tabs-header {
-        display: flex;
-        justify-content: center;
-        gap: 12px;
-        margin-bottom: 32px;
-        flex-wrap: wrap;
-      }
+        .btn-generate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
+        }
 
-      .tab-btn {
-        background: var(--card-bg);
-        border: 1px solid var(--border-color);
-        color: var(--text-muted);
-        padding: 12px 24px;
-        border-radius: 50px;
-        cursor: pointer;
-        font-weight: 600;
-        font-family: inherit;
-        font-size: 0.95rem;
-        backdrop-filter: var(--glass-blur);
-      }
+        /* === MAIN WORKSPACE (CANVAS) === */
+        .workspace {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
 
-      .tab-btn:hover {
-        color: var(--text-color);
-      }
+        .canvas-container {
+            width: 100%;
+            max-width: 800px;
+            aspect-ratio: 16/9;
+            background: repeating-conic-gradient(rgba(255,255,255,0.03) 0% 25%, transparent 0% 50%) 50% / 20px 20px;
+            background-color: rgba(0, 0, 0, 0.4);
+            border: 2px dashed var(--border-color);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
 
-      .tab-btn.active {
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-        color: #ffffff;
-        border-color: transparent;
-        box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
-      }
+        .upload-placeholder {
+            text-align: center;
+            color: var(--text-muted);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: center;
+        }
 
-      .tab-content {
-        background: var(--card-bg);
-        border: 1px solid var(--border-color);
-        border-radius: 24px;
-        padding: 40px;
-        display: none;
-        backdrop-filter: var(--glass-blur);
-        box-shadow: var(--shadow);
-        animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      }
+        .upload-icon {
+            font-size: 3rem;
+            opacity: 0.7;
+        }
 
-      .tab-content.active {
-        display: block;
-      }
+        .preview-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: none;
+            z-index: 2;
+        }
 
-      /* === CALCULATOR === */
-      .calc-box {
-        background: var(--card-bg);
-        border: 1px solid var(--border-color);
-        border-radius: 24px;
-        padding: 40px;
-        margin: 60px 0;
-        backdrop-filter: var(--glass-blur);
-        box-shadow: var(--shadow);
-      }
+        /* Loading Animation */
+        .loader-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(15, 17, 26, 0.8);
+            backdrop-filter: blur(5px);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
 
-      .calc-header {
-        text-align: center;
-        margin-bottom: 32px;
-      }
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(139, 92, 246, 0.3);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 16px;
+        }
 
-      .slider-group {
-        margin-bottom: 28px;
-      }
+        .loader-text {
+            font-weight: 500;
+            letter-spacing: 1px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
 
-      .slider-label {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 12px;
-        font-weight: 600;
-      }
+        /* Toolbar Actions Over Canvas */
+        .canvas-actions {
+            position: absolute;
+            bottom: 20px;
+            display: flex;
+            gap: 12px;
+            z-index: 5;
+            display: none; /* Muncul setelah gambar ada */
+        }
 
-      input[type="range"] {
-        -webkit-appearance: none;
-        width: 100%;
-        height: 8px;
-        border-radius: 10px;
-        background: rgba(150, 150, 150, 0.2);
-        outline: none;
-      }
+        .action-btn {
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.2s;
+        }
 
-      input[type="range"]::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        width: 22px;
-        height: 22px;
-        border-radius: 50%;
-        background: var(--accent-primary);
-        cursor: pointer;
-        box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
-      }
+        .action-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
 
-      .calc-result {
-        background: rgba(0, 0, 0, 0.03);
-        border: 1px dashed var(--border-color);
-        padding: 24px;
-        border-radius: 16px;
-        text-align: center;
-      }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
 
-      .result-value {
-        font-size: 2.2rem;
-        font-weight: 800;
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin: 8px 0;
-      }
-
-      /* === BUTTONS & MODAL === */
-      .cta-btn {
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-        color: white;
-        padding: 14px 36px;
-        border: none;
-        border-radius: 50px;
-        font-weight: 700;
-        font-size: 1rem;
-        font-family: inherit;
-        cursor: pointer;
-        box-shadow: 0 8px 20px rgba(16, 185, 129, 0.35);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
-
-      .cta-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 12px 25px rgba(16, 185, 129, 0.45);
-      }
-
-      .modal-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(8px);
-        display: none;
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
-      }
-
-      .modal {
-        background: var(--card-bg);
-        border: 1px solid var(--border-color);
-        padding: 36px;
-        border-radius: 24px;
-        max-width: 480px;
-        width: 90%;
-        box-shadow: var(--shadow);
-        backdrop-filter: var(--glass-blur);
-        position: relative;
-        text-align: center;
-        animation: scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      }
-
-      .close-modal {
-        position: absolute;
-        top: 16px;
-        right: 20px;
-        font-size: 1.8rem;
-        cursor: pointer;
-        color: var(--text-muted);
-      }
-
-      footer {
-        text-align: center;
-        padding: 30px 0;
-        color: var(--text-muted);
-        font-weight: 500;
-        font-size: 0.9rem;
-      }
-
-      @keyframes slideUp {
-        from { opacity: 0; transform: translateY(15px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-
-      @keyframes scaleIn {
-        from { opacity: 0; transform: scale(0.95); }
-        to { opacity: 1; transform: scale(1); }
-      }
-
-      @media (max-width: 768px) {
-        .hero h1 { font-size: 2.4rem; }
-        .tab-content, .calc-box { padding: 24px; }
-      }
-
-      div[data-banner-id="2025966"], div[data-banner-id="2025963"] {
-        display: grid;
-        place-items: center;
-      }
+        @media (max-width: 900px) {
+            .app-container { flex-direction: column; }
+            .sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border-color); }
+            .workspace { padding: 20px; }
+        }
     </style>
-  </head>
-  <body>
-    <div class="container">
-      <header>
-        <div class="logo">⚡ SAKTI.</div>
+</head>
+<body>
+
+    <header>
+        <div class="brand">freedesain.github.io <span>AI Studio</span></div>
         <div class="header-actions">
-          <select class="lang-select" id="langSelect">
-            <option value="id">🇮🇩 ID</option>
-            <option value="en">🇺🇸 EN</option>
-          </select>
-          <button class="theme-btn" id="themeToggle">🌙 Gelap</button>
+            <button onclick="resetWorkspace()">Mulai Baru</button>
+            <button style="background: var(--text-main); color: var(--bg-color);">Ekspor Proyek</button>
         </div>
-      </header>
+    </header>
 
-      <section class="hero">
-        <div data-banner-id="2025963"></div>
-        <div data-banner-id="2025966"></div>
-        <span class="badge" id="txtBadge">Platform Pengelolaan Terpadu</span>
-        <h1 id="txtHeroTitle">
-          Harmonisasi Keuangan <br />
-          <span>Dalam Satu Sentuhan</span>
-        </h1>
-        <p id="txtHeroDesc">
-          Rancang, laksanakan, dan laporkan anggaran instansi Anda dengan antarmuka yang intuitif, presisi, dan sepenuhnya terenkripsi.
-        </p>
-        <button class="cta-btn" id="openModal">Eksplorasi Arsitektur</button>
-      </section>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="control-group">
+                <label>Prompt Utama (Deskripsi Imajinasi)</label>
+                <textarea id="promptInput" rows="4" placeholder="Misal: Pemandangan kota cyberpunk neon di malam hari, resolusi 8k, sinematik..."></textarea>
+            </div>
 
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-number" data-target="100">0</div>
-          <div class="stat-label" id="lblStat1">Tingkat Integrasi (%)</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number" data-target="24">0</div>
-          <div class="stat-label" id="lblStat2">Aksesabilitas (Jam)</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number" data-target="99">0</div>
-          <div class="stat-label" id="lblStat3">Akurasi Pelaporan (%)</div>
-        </div>
-      </div>
+            <div class="control-group">
+                <label>Pilih Tema / Gaya Visual</label>
+                <div class="theme-grid" id="themeGrid">
+                    <div class="theme-card active" data-theme="realistik">📸 Realistik</div>
+                    <div class="theme-card" data-theme="anime">🌸 Anime Style</div>
+                    <div class="theme-card" data-theme="cyberpunk">🌃 Cyberpunk</div>
+                    <div class="theme-card" data-theme="vector">✒️ Vector Art / Trace</div>
+                    <div class="theme-card" data-theme="3d">🧊 3D Render</div>
+                    <div class="theme-card" data-theme="sketch">✏️ Sketsa Pensil</div>
+                </div>
+            </div>
 
-      <section class="tabs-section">
-        <div class="tabs-header">
-          <button class="tab-btn active" onclick="switchTab('anggaran')" id="btnTab1">Penganggaran</button>
-          <button class="tab-btn" onclick="switchTab('komitmen')" id="btnTab2">Komitmen</button>
-          <button class="tab-btn" onclick="switchTab('pembayaran')" id="btnTab3">Pembayaran</button>
-          <button class="tab-btn" onclick="switchTab('pelaporan')" id="btnTab4">Pelaporan (GL)</button>
-        </div>
+            <div class="control-group">
+                <label style="display: flex; justify-content: space-between;">
+                    <span>Tingkat Kreativitas AI</span>
+                    <span id="creativityValue">75%</span>
+                </label>
+                <input type="range" id="creativitySlider" min="1" max="100" value="75">
+            </div>
 
-        <div id="anggaran" class="tab-content active">
-          <h3 id="titleTab1">📝 Modul Penganggaran</h3>
-          <p id="descTab1" style="margin-top: 12px; color: var(--text-muted)">
-            Merancang Rencana Kerja dan Anggaran (RKA) dengan validasi otomatis tingkat tinggi. Meminimalisir kesalahan manusia dalam menentukan pagu anggaran instansi.
-          </p>
-        </div>
+            <div class="control-group">
+                <label style="display: flex; justify-content: space-between;">
+                    <span>Kekuatan Referensi Gambar</span>
+                    <span id="strengthValue">50%</span>
+                </label>
+                <input type="range" id="strengthSlider" min="1" max="100" value="50">
+            </div>
 
-        <div id="komitmen" class="tab-content">
-          <h3 id="titleTab2">🤝 Modul Komitmen & Supplier</h3>
-          <p id="descTab2" style="margin-top: 12px; color: var(--text-muted)">
-            Sistem pencatatan terpusat untuk data Supplier dan Manajemen Kontrak. Memastikan proses procurement berjalan pada jalur legal yang tepat.
-          </p>
-        </div>
+            <button class="btn-generate" id="generateBtn">✨ Generate Gambar AI</button>
+        </aside>
 
-        <div id="pembayaran" class="tab-content">
-          <h3 id="titleTab3">💳 Modul Pembayaran (SPP/SPM)</h3>
-          <p id="descTab3" style="margin-top: 12px; color: var(--text-muted)">
-            Alur pengajuan SPP hingga SPM tersertifikasi digital. Dilengkapi verifikasi One-Time Password (OTP) lapis ganda.
-          </p>
-        </div>
+        <main class="workspace">
+            <div class="canvas-container" id="dropZone">
+                <div class="upload-placeholder" id="uploadPlaceholder">
+                    <div class="upload-icon">📥</div>
+                    <h3>Tarik & Lepas Gambar Referensi</h3>
+                    <p style="font-size: 0.9rem;">atau klik untuk memilih file (Opsional)</p>
+                    <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                </div>
 
-        <div id="pelaporan" class="tab-content">
-          <h3 id="titleTab4">📊 Modul Akuntansi & Pelaporan</h3>
-          <p id="descTab4" style="margin-top: 12px; color: var(--text-muted)">
-            Engine pencatatan General Ledger akrual yang merangkum Neraca, LPE, LO, dan LRA secara real-time.
-          </p>
-        </div>
-      </section>
+                <img id="imagePreview" class="preview-image" src="" alt="AI Output Preview">
 
-      <section class="calc-box">
-        <div class="calc-header">
-          <h2 id="calcTitle">Kalkulator Efisiensi Waktu</h2>
-          <p id="calcSub" style="color: var(--text-muted)">
-            Geser tuas di bawah untuk melihat potensi penghematan waktu tim Anda.
-          </p>
-        </div>
+                <div class="loader-overlay" id="loader">
+                    <div class="spinner"></div>
+                    <div class="loader-text">Memproses AI Render...</div>
+                </div>
 
-        <div class="slider-group">
-          <div class="slider-label">
-            <span id="lblTxVolume">Volume Transaksi (Per Bulan):</span>
-            <span id="txValue" style="color: var(--accent-primary)">150 Transaksi</span>
-          </div>
-          <input type="range" id="txRange" min="10" max="1000" value="150" />
-        </div>
-
-        <div class="calc-result">
-          <div id="lblTimeNeeded" style="color: var(--text-muted); font-size: 0.95rem">
-            Waktu Operasional yang Dibutuhkan:
-          </div>
-          <div class="result-value" id="hoursSaved">30.0 Jam</div>
-          <div id="lblProdBoost" style="font-size: 0.85rem; font-weight: 600; color: var(--accent-secondary); margin-top: 8px;">
-            ✨ Meningkatkan produktivitas tim hingga 80%
-          </div>
-        </div>
-      </section>
-
-      <footer>
-        <p>&copy; 2026 SAKTI Redesigned. FreeDesain UI Theme.</p>
-      </footer>
-    </div>
-
-    <div class="modal-overlay" id="modalOverlay">
-      <div class="modal">
-        <span class="close-modal" id="closeModal">&times;</span>
-        <h3 id="modalTitle" style="margin-bottom: 16px; font-size: 1.6rem">Arsitektur Cloud</h3>
-        <p id="modalDesc" style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px;">
-          SAKTI Redesign menggunakan infrastruktur serverless dengan kapabilitas auto-scaling, enkripsi AES-256 end-to-end, dan zero downtime.
-        </p>
-        <button class="cta-btn" id="modalCloseBtn" style="width: 100%" onclick="closeModalFunc()">
-          Tutup Informasi
-        </button>
-      </div>
+                <div class="canvas-actions" id="canvasActions">
+                    <button class="action-btn">🔄 Variasi Lain</button>
+                    <button class="action-btn">🪄 Upscale HD</button>
+                    <button class="action-btn" style="background: var(--text-main); color: var(--bg-color);">⬇️ Unduh</button>
+                </div>
+            </div>
+        </main>
     </div>
 
     <script>
-      // 1. DICTIONARY MULTI-BAHASA (i18n)
-      const i18n = {
-        id: {
-          docTitle: "Sistem SAKTI - Platform Manajemen Keuangan Modern",
-          themeDark: "🌙 Gelap",
-          themeLight: "☀️ Terang",
-          txtBadge: "Platform Pengelolaan Terpadu",
-          txtHeroTitle: "Harmonisasi Keuangan <br /><span>Dalam Satu Sentuhan</span>",
-          txtHeroDesc: "Rancang, laksanakan, dan laporkan anggaran instansi Anda dengan antarmuka yang intuitif, presisi, dan sepenuhnya terenkripsi.",
-          openModal: "Eksplorasi Arsitektur",
-          lblStat1: "Tingkat Integrasi (%)",
-          lblStat2: "Aksesabilitas (Jam)",
-          lblStat3: "Akurasi Pelaporan (%)",
-          btnTab1: "Penganggaran",
-          btnTab2: "Komitmen",
-          btnTab3: "Pembayaran",
-          btnTab4: "Pelaporan (GL)",
-          titleTab1: "📝 Modul Penganggaran",
-          descTab1: "Merancang Rencana Kerja dan Anggaran (RKA) dengan validasi otomatis tingkat tinggi. Meminimalisir kesalahan manusia dalam menentukan pagu anggaran instansi.",
-          titleTab2: "🤝 Modul Komitmen & Supplier",
-          descTab2: "Sistem pencatatan terpusat untuk data Supplier dan Manajemen Kontrak. Memastikan proses procurement berjalan pada jalur legal yang tepat.",
-          titleTab3: "💳 Modul Pembayaran (SPP/SPM)",
-          descTab3: "Alur pengajuan SPP hingga SPM tersertifikasi digital. Dilengkapi verifikasi One-Time Password (OTP) lapis ganda.",
-          titleTab4: "📊 Modul Akuntansi & Pelaporan",
-          descTab4: "Engine pencatatan General Ledger akrual yang merangkum Neraca, LPE, LO, dan LRA secara real-time.",
-          calcTitle: "Kalkulator Efisiensi Waktu",
-          calcSub: "Geser tuas di bawah untuk melihat potensi penghematan waktu tim Anda.",
-          lblTxVolume: "Volume Transaksi (Per Bulan):",
-          unitTx: "Transaksi",
-          lblTimeNeeded: "Waktu Operasional yang Dibutuhkan:",
-          unitHours: "Jam",
-          lblProdBoost: "✨ Meningkatkan produktivitas tim hingga 80%",
-          modalTitle: "Arsitektur Cloud",
-          modalDesc: "SAKTI Redesign menggunakan infrastruktur serverless dengan kapabilitas auto-scaling, enkripsi AES-256 end-to-end, dan zero downtime.",
-          modalCloseBtn: "Tutup Informasi"
-        },
-        en: {
-          docTitle: "SAKTI System - Modern Financial Management Platform",
-          themeDark: "🌙 Dark",
-          themeLight: "☀️ Light",
-          txtBadge: "Integrated Management Platform",
-          txtHeroTitle: "Financial Harmonization <br /><span>In One Touch</span>",
-          txtHeroDesc: "Design, execute, and report your agency budget with an intuitive, precise, and fully encrypted interface.",
-          openModal: "Explore Architecture",
-          lblStat1: "Integration Level (%)",
-          lblStat2: "Accessibility (Hours)",
-          lblStat3: "Reporting Accuracy (%)",
-          btnTab1: "Budgeting",
-          btnTab2: "Commitment",
-          btnTab3: "Payment",
-          btnTab4: "Reporting (GL)",
-          titleTab1: "📝 Budgeting Module",
-          descTab1: "Design Work Plans and Budgets (RKA) with high-level automated validation. Minimize human errors in setting agency budget ceilings.",
-          titleTab2: "🤝 Commitment & Supplier Module",
-          descTab2: "Centralized record system for Supplier data and Contract Management. Ensures procurement processes stay on proper legal tracks.",
-          titleTab3: "💳 Payment Module (SPP/SPM)",
-          descTab3: "Digital certified workflow from payment request to payment order. Features multi-layer One-Time Password (OTP) verification.",
-          titleTab4: "📊 Accounting & Reporting Module",
-          descTab4: "Accrual General Ledger engine generating Balance Sheet, LPE, LO, and LRA reports in real-time at your fingertips.",
-          calcTitle: "Time Efficiency Calculator",
-          calcSub: "Slide the bar below to see your team's potential time savings.",
-          lblTxVolume: "Transaction Volume (Per Month):",
-          unitTx: "Transactions",
-          lblTimeNeeded: "Required Operational Time:",
-          unitHours: "Hours",
-          lblProdBoost: "✨ Increases team productivity by up to 80%",
-          modalTitle: "Cloud Architecture",
-          modalDesc: "SAKTI Redesign operates on serverless infrastructure with auto-scaling capabilities, AES-256 end-to-end encryption, and zero downtime.",
-          modalCloseBtn: "Close Information"
+        // Interaksi Pilihan Tema
+        const themeCards = document.querySelectorAll('.theme-card');
+        themeCards.forEach(card => {
+            card.addEventListener('click', () => {
+                themeCards.forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+            });
+        });
+
+        // Update Text Slider
+        const crSlider = document.getElementById('creativitySlider');
+        const crValue = document.getElementById('creativityValue');
+        crSlider.addEventListener('input', (e) => crValue.innerText = e.target.value + '%');
+
+        const strSlider = document.getElementById('strengthSlider');
+        const strValue = document.getElementById('strengthValue');
+        strSlider.addEventListener('input', (e) => strValue.innerText = e.target.value + '%');
+
+        // Logika Upload Gambar (Klik / Drag & Drop)
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const uploadPlaceholder = document.getElementById('uploadPlaceholder');
+        const imagePreview = document.getElementById('imagePreview');
+        const canvasActions = document.getElementById('canvasActions');
+
+        dropZone.addEventListener('click', (e) => {
+            if(e.target === dropZone || e.target.closest('.upload-placeholder')) {
+                fileInput.click();
+            }
+        });
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.style.borderColor = 'var(--accent)';
+        });
+
+        dropZone.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            dropZone.style.borderColor = 'var(--border-color)';
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.style.borderColor = 'var(--border-color)';
+            if (e.dataTransfer.files.length) {
+                handleFile(e.dataTransfer.files[0]);
+            }
+        });
+
+        fileInput.addEventListener('change', function() {
+            if (this.files.length) {
+                handleFile(this.files[0]);
+            }
+        });
+
+        function handleFile(file) {
+            if (!file.type.startsWith('image/')) return;
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                uploadPlaceholder.style.display = 'none';
+                imagePreview.src = e.target.result;
+                imagePreview.style.display = 'block';
+                canvasActions.style.display = 'flex';
+            };
+            reader.readAsDataURL(file);
         }
-      };
 
-      let currentLang = "id";
+        // Logika Animasi Tombol Generate AI
+        const generateBtn = document.getElementById('generateBtn');
+        const loader = document.getElementById('loader');
 
-      function applyTranslations(lang) {
-        currentLang = lang;
-        const dict = i18n[lang] || i18n.id;
-        document.documentElement.lang = lang;
-        
-        document.getElementById("docTitle").innerText = dict.docTitle;
-        document.getElementById("txtBadge").innerText = dict.txtBadge;
-        document.getElementById("txtHeroTitle").innerHTML = dict.txtHeroTitle;
-        document.getElementById("txtHeroDesc").innerText = dict.txtHeroDesc;
-        document.getElementById("openModal").innerText = dict.openModal;
-        document.getElementById("lblStat1").innerText = dict.lblStat1;
-        document.getElementById("lblStat2").innerText = dict.lblStat2;
-        document.getElementById("lblStat3").innerText = dict.lblStat3;
-        document.getElementById("btnTab1").innerText = dict.btnTab1;
-        document.getElementById("btnTab2").innerText = dict.btnTab2;
-        document.getElementById("btnTab3").innerText = dict.btnTab3;
-        document.getElementById("btnTab4").innerText = dict.btnTab4;
-        document.getElementById("titleTab1").innerText = dict.titleTab1;
-        document.getElementById("descTab1").innerText = dict.descTab1;
-        document.getElementById("titleTab2").innerText = dict.titleTab2;
-        document.getElementById("descTab2").innerText = dict.descTab2;
-        document.getElementById("titleTab3").innerText = dict.titleTab3;
-        document.getElementById("descTab3").innerText = dict.descTab3;
-        document.getElementById("titleTab4").innerText = dict.titleTab4;
-        document.getElementById("descTab4").innerText = dict.descTab4;
-        document.getElementById("calcTitle").innerText = dict.calcTitle;
-        document.getElementById("calcSub").innerText = dict.calcSub;
-        document.getElementById("lblTxVolume").innerText = dict.lblTxVolume;
-        document.getElementById("lblTimeNeeded").innerText = dict.lblTimeNeeded;
-        document.getElementById("lblProdBoost").innerText = dict.lblProdBoost;
-        document.getElementById("modalTitle").innerText = dict.modalTitle;
-        document.getElementById("modalDesc").innerText = dict.modalDesc;
-        document.getElementById("modalCloseBtn").innerText = dict.modalCloseBtn;
+        generateBtn.addEventListener('click', () => {
+            const promptVal = document.getElementById('promptInput').value;
+            if(!promptVal && uploadPlaceholder.style.display !== 'none') {
+                alert("Silakan masukkan teks prompt atau unggah gambar referensi terlebih dahulu!");
+                return;
+            }
 
-        // Refresh calculator units
-        updateCalc();
+            // Munculkan Loading Screen
+            loader.style.display = 'flex';
+            canvasActions.style.display = 'none';
+            generateBtn.disabled = true;
+            generateBtn.innerText = "Memproses...";
 
-        // Update Theme Button Text
-        const theme = document.documentElement.getAttribute("data-theme");
-        document.getElementById("themeToggle").innerHTML = theme === "dark" ? dict.themeLight : dict.themeDark;
-      }
+            // Simulasi delay AI rendering (3 detik)
+            setTimeout(() => {
+                loader.style.display = 'none';
+                
+                // Jika belum ada gambar yang diupload, kita beri placeholder dummy berwarna untuk efek visual
+                if(uploadPlaceholder.style.display !== 'none') {
+                    uploadPlaceholder.style.display = 'none';
+                    // Dummy image base64 atau gradient untuk simulasi hasil AI (menggunakan API placeholder)
+                    imagePreview.src = "https://picsum.photos/seed/" + Math.random() + "/800/450";
+                    imagePreview.style.display = 'block';
+                }
 
-      // 2. OTOMATISASI DETEKSI LOKASI/BAHASA CLIENT
-      async function autoDetectLocationAndLang() {
-        try {
-          const res = await fetch("https://ipapi.co/json/");
-          const data = await res.json();
-          const countryCode = data.country_code;
-          const detectedLang = countryCode === "ID" ? "id" : "en";
-          document.getElementById("langSelect").value = detectedLang;
-          applyTranslations(detectedLang);
-        } catch (err) {
-          // Fallback berdasarkan browser language
-          const browserLang = navigator.language.startsWith("id") ? "id" : "en";
-          document.getElementById("langSelect").value = browserLang;
-          applyTranslations(browserLang);
+                canvasActions.style.display = 'flex';
+                generateBtn.disabled = false;
+                generateBtn.innerText = "✨ Generate Gambar AI";
+            }, 3000);
+        });
+
+        // Reset Workspace
+        function resetWorkspace() {
+            document.getElementById('promptInput').value = '';
+            imagePreview.src = '';
+            imagePreview.style.display = 'none';
+            canvasActions.style.display = 'none';
+            uploadPlaceholder.style.display = 'flex';
+            fileInput.value = '';
         }
-      }
-
-      document.getElementById("langSelect").addEventListener("change", (e) => {
-        applyTranslations(e.target.value);
-      });
-
-      // 3. THEME SWITCHER
-      const themeToggleBtn = document.getElementById("themeToggle");
-      const htmlTag = document.documentElement;
-
-      themeToggleBtn.addEventListener("click", () => {
-        const currentTheme = htmlTag.getAttribute("data-theme");
-        const newTheme = currentTheme === "dark" ? "light" : "dark";
-        htmlTag.setAttribute("data-theme", newTheme);
-        const dict = i18n[currentLang];
-        themeToggleBtn.innerHTML = newTheme === "dark" ? dict.themeLight : dict.themeDark;
-      });
-
-      // 4. TAB SWITCHING
-      function switchTab(tabId) {
-        document.querySelectorAll(".tab-btn").forEach((btn) => btn.classList.remove("active"));
-        document.querySelectorAll(".tab-content").forEach((content) => content.classList.remove("active"));
-        event.currentTarget.classList.add("active");
-        document.getElementById(tabId).classList.add("active");
-      }
-
-      // 5. STATS COUNTER ANIMATION
-      const counters = document.querySelectorAll(".stat-number");
-      counters.forEach((counter) => {
-        const target = +counter.getAttribute("data-target");
-        let count = 0;
-        const speed = target / 40;
-
-        const updateCount = () => {
-          count += speed;
-          if (count < target) {
-            counter.innerText = Math.ceil(count);
-            setTimeout(updateCount, 30);
-          } else {
-            counter.innerText = target;
-          }
-        };
-        updateCount();
-      });
-
-      // 6. CALCULATOR WIDGET
-      const txRange = document.getElementById("txRange");
-      const txValue = document.getElementById("txValue");
-      const hoursSaved = document.getElementById("hoursSaved");
-
-      function updateCalc() {
-        const val = txRange.value;
-        const dict = i18n[currentLang];
-        txValue.innerText = `${val} ${dict.unitTx}`;
-        const saved = (val * 0.2).toFixed(1);
-        hoursSaved.innerText = `${saved} ${dict.unitHours}`;
-      }
-
-      txRange.addEventListener("input", updateCalc);
-
-      // 7. MODAL LOGIC
-      const modalOverlay = document.getElementById("modalOverlay");
-      const openModalBtn = document.getElementById("openModal");
-      const closeModalBtn = document.getElementById("closeModal");
-
-      openModalBtn.addEventListener("click", () => {
-        modalOverlay.style.display = "flex";
-      });
-
-      function closeModalFunc() {
-        modalOverlay.style.display = "none";
-      }
-
-      closeModalBtn.addEventListener("click", closeModalFunc);
-      modalOverlay.addEventListener("click", (e) => {
-        if (e.target === modalOverlay) closeModalFunc();
-      });
-
-      // Jalankan deteksi bahasa saat awal dimuat
-      autoDetectLocationAndLang();
     </script>
-    <script type="text/javascript">
-      aclib.runAutoTag({
-        zoneId: 'cwt97m54zb',
-      });
-    </script>
-  </body>
+</body>
 </html>
