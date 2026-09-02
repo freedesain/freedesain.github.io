@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>freedesain.github.io | AI Image Studio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-   <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
+    <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
     <script type="text/javascript">
-    aclib.runAutoTag({
-        zoneId: 'osb3hunkkg',
-    });
-</script>
+        aclib.runAutoTag({
+            zoneId: 'osb3hunkkg',
+        });
+    </script>
 
     <style>
         :root {
             --bg-color: #0f111a;
-            --panel-bg: rgba(25, 28, 41, 0.7);
+            --panel-bg: rgba(25, 28, 41, 0.85);
             --border-color: rgba(255, 255, 255, 0.1);
             --accent: #8b5cf6;
             --accent-hover: #7c3aed;
@@ -37,10 +37,10 @@
                 radial-gradient(circle at 15% 50%, rgba(139, 92, 246, 0.15), transparent 25%),
                 radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.1), transparent 25%);
             color: var(--text-main);
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow: hidden;
+            overflow-x: hidden; /* Mencegah geser horizontal */
         }
 
         /* === HEADER === */
@@ -49,20 +49,22 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 30px;
+            padding: 0 20px;
             border-bottom: 1px solid var(--border-color);
-            background: rgba(15, 17, 26, 0.8);
+            background: rgba(15, 17, 26, 0.9);
             backdrop-filter: var(--glass-blur);
-            z-index: 10;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .brand {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 700;
             letter-spacing: -0.5px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .brand span {
@@ -71,11 +73,17 @@
             -webkit-text-fill-color: transparent;
         }
 
+        .header-actions {
+            display: flex;
+            gap: 8px;
+        }
+
         .header-actions button {
             background: transparent;
             color: var(--text-main);
             border: 1px solid var(--border-color);
-            padding: 8px 16px;
+            padding: 6px 12px;
+            font-size: 0.85rem;
             border-radius: 8px;
             cursor: pointer;
             transition: 0.3s;
@@ -89,30 +97,29 @@
         .app-container {
             display: flex;
             flex: 1;
-            height: calc(100vh - 70px);
+            width: 100%;
         }
 
         /* === SIDEBAR (CONTROLS) === */
         .sidebar {
-            width: 350px;
+            width: 380px;
             background: var(--panel-bg);
             backdrop-filter: var(--glass-blur);
             border-right: 1px solid var(--border-color);
-            padding: 24px;
-            overflow-y: auto;
+            padding: 20px;
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 20px;
         }
 
         .control-group {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
 
         .control-group label {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             color: var(--text-muted);
         }
@@ -125,6 +132,7 @@
             border-radius: 10px;
             padding: 12px;
             color: var(--text-main);
+            font-size: 0.95rem;
             resize: none;
             outline: none;
             transition: border-color 0.3s;
@@ -137,18 +145,18 @@
         /* Theme Selector */
         .theme-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
         }
 
         .theme-card {
             background: rgba(0, 0, 0, 0.3);
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: 12px;
+            padding: 10px;
             text-align: center;
             cursor: pointer;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             transition: 0.2s;
         }
 
@@ -160,7 +168,7 @@
             border-color: var(--accent);
             background: rgba(139, 92, 246, 0.2);
             color: #fff;
-            box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+            box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
         }
 
         /* Sliders */
@@ -175,8 +183,8 @@
 
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
             background: var(--accent);
             cursor: pointer;
@@ -187,14 +195,14 @@
             background: linear-gradient(135deg, var(--accent), #3b82f6);
             color: white;
             border: none;
-            padding: 16px;
+            padding: 14px;
             border-radius: 12px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
             transition: transform 0.2s, box-shadow 0.2s;
-            margin-top: auto;
+            margin-top: 10px;
         }
 
         .btn-generate:hover {
@@ -205,7 +213,7 @@
         /* === MAIN WORKSPACE (CANVAS) === */
         .workspace {
             flex: 1;
-            padding: 40px;
+            padding: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -233,12 +241,17 @@
             color: var(--text-muted);
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 12px;
             align-items: center;
+            padding: 15px;
+        }
+
+        .upload-placeholder h3 {
+            font-size: 1rem;
         }
 
         .upload-icon {
-            font-size: 3rem;
+            font-size: 2.5rem;
             opacity: 0.7;
         }
 
@@ -254,7 +267,7 @@
         .loader-overlay {
             position: absolute;
             inset: 0;
-            background: rgba(15, 17, 26, 0.8);
+            background: rgba(15, 17, 26, 0.85);
             backdrop-filter: blur(5px);
             display: none;
             flex-direction: column;
@@ -264,17 +277,18 @@
         }
 
         .spinner {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             border: 4px solid rgba(139, 92, 246, 0.3);
             border-top-color: var(--accent);
             border-radius: 50%;
             animation: spin 1s linear infinite;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
         .loader-text {
             font-weight: 500;
+            font-size: 0.9rem;
             letter-spacing: 1px;
             animation: pulse 1.5s ease-in-out infinite;
         }
@@ -282,11 +296,14 @@
         /* Toolbar Actions Over Canvas */
         .canvas-actions {
             position: absolute;
-            bottom: 20px;
+            bottom: 15px;
             display: flex;
-            gap: 12px;
+            gap: 8px;
             z-index: 5;
-            display: none; /* Muncul setelah gambar ada */
+            display: none; 
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 0 10px;
         }
 
         .action-btn {
@@ -294,9 +311,10 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.2);
             color: white;
-            padding: 10px 20px;
+            padding: 8px 14px;
             border-radius: 30px;
             cursor: pointer;
+            font-size: 0.8rem;
             font-weight: 500;
             transition: 0.2s;
         }
@@ -309,10 +327,30 @@
         @keyframes spin { 100% { transform: rotate(360deg); } }
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
 
+        /* === RESPONSIVE MOBILE TWEAKS === */
         @media (max-width: 900px) {
-            .app-container { flex-direction: column; }
-            .sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border-color); }
-            .workspace { padding: 20px; }
+            header {
+                padding: 0 15px;
+            }
+            .brand {
+                font-size: 1rem;
+            }
+            .app-container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                padding: 15px;
+            }
+            .workspace {
+                padding: 15px;
+                min-height: 350px;
+            }
+            .canvas-container {
+                aspect-ratio: 4/3; /* Lebih fleksibel di layar HP */
+            }
         }
     </style>
 </head>
@@ -321,8 +359,8 @@
     <header>
         <div class="brand">Free Desain By <span>AI Studio</span></div>
         <div class="header-actions">
-            <button onclick="resetWorkspace()">Mulai Baru</button>
-            <button style="background: var(--text-main); color: var(--bg-color);">Ekspor Proyek</button>
+            <button onclick="resetWorkspace()">Reset</button>
+            <button style="background: var(--text-main); color: var(--bg-color);">Ekspor</button>
         </div>
     </header>
 
@@ -330,7 +368,7 @@
         <aside class="sidebar">
             <div class="control-group">
                 <label>Prompt Utama (Deskripsi Imajinasi)</label>
-                <textarea id="promptInput" rows="4" placeholder="Misal: Pemandangan kota cyberpunk neon di malam hari, resolusi 8k, sinematik..."></textarea>
+                <textarea id="promptInput" rows="3" placeholder="Misal: Pemandangan kota cyberpunk neon di malam hari..."></textarea>
             </div>
 
             <div class="control-group">
@@ -339,9 +377,9 @@
                     <div class="theme-card active" data-theme="realistik">📸 Realistik</div>
                     <div class="theme-card" data-theme="anime">🌸 Anime Style</div>
                     <div class="theme-card" data-theme="cyberpunk">🌃 Cyberpunk</div>
-                    <div class="theme-card" data-theme="vector">✒️ Vector Art / Trace</div>
+                    <div class="theme-card" data-theme="vector">✒️ Vector Art</div>
                     <div class="theme-card" data-theme="3d">🧊 3D Render</div>
-                    <div class="theme-card" data-theme="sketch">✏️ Sketsa Pensil</div>
+                    <div class="theme-card" data-theme="sketch">✏️ Sketsa</div>
                 </div>
             </div>
 
@@ -369,7 +407,7 @@
                 <div class="upload-placeholder" id="uploadPlaceholder">
                     <div class="upload-icon">📥</div>
                     <h3>Tarik & Lepas Gambar Referensi</h3>
-                    <p style="font-size: 0.9rem;">atau klik untuk memilih file (Opsional)</p>
+                    <p style="font-size: 0.8rem;">atau klik untuk memilih file (Opsional)</p>
                     <input type="file" id="fileInput" accept="image/*" style="display: none;">
                 </div>
 
@@ -381,8 +419,8 @@
                 </div>
 
                 <div class="canvas-actions" id="canvasActions">
-                    <button class="action-btn">🔄 Variasi Lain</button>
-                    <button class="action-btn">🪄 Upscale HD</button>
+                    <button class="action-btn">🔄 Variasi</button>
+                    <button class="action-btn">🪄 Upscale</button>
                     <button class="action-btn" style="background: var(--text-main); color: var(--bg-color);">⬇️ Unduh</button>
                 </div>
             </div>
@@ -390,7 +428,6 @@
     </div>
 
     <script>
-        // Interaksi Pilihan Tema
         const themeCards = document.querySelectorAll('.theme-card');
         themeCards.forEach(card => {
             card.addEventListener('click', () => {
@@ -399,7 +436,6 @@
             });
         });
 
-        // Update Text Slider
         const crSlider = document.getElementById('creativitySlider');
         const crValue = document.getElementById('creativityValue');
         crSlider.addEventListener('input', (e) => crValue.innerText = e.target.value + '%');
@@ -408,7 +444,6 @@
         const strValue = document.getElementById('strengthValue');
         strSlider.addEventListener('input', (e) => strValue.innerText = e.target.value + '%');
 
-        // Logika Upload Gambar (Klik / Drag & Drop)
         const dropZone = document.getElementById('dropZone');
         const fileInput = document.getElementById('fileInput');
         const uploadPlaceholder = document.getElementById('uploadPlaceholder');
@@ -457,7 +492,6 @@
             reader.readAsDataURL(file);
         }
 
-        // Logika Animasi Tombol Generate AI
         const generateBtn = document.getElementById('generateBtn');
         const loader = document.getElementById('loader');
 
@@ -468,20 +502,16 @@
                 return;
             }
 
-            // Munculkan Loading Screen
             loader.style.display = 'flex';
             canvasActions.style.display = 'none';
             generateBtn.disabled = true;
             generateBtn.innerText = "Memproses...";
 
-            // Simulasi delay AI rendering (3 detik)
             setTimeout(() => {
                 loader.style.display = 'none';
                 
-                // Jika belum ada gambar yang diupload, kita beri placeholder dummy berwarna untuk efek visual
                 if(uploadPlaceholder.style.display !== 'none') {
                     uploadPlaceholder.style.display = 'none';
-                    // Dummy image base64 atau gradient untuk simulasi hasil AI (menggunakan API placeholder)
                     imagePreview.src = "https://picsum.photos/seed/" + Math.random() + "/800/450";
                     imagePreview.style.display = 'block';
                 }
@@ -492,7 +522,6 @@
             }, 3000);
         });
 
-        // Reset Workspace
         function resetWorkspace() {
             document.getElementById('promptInput').value = '';
             imagePreview.src = '';
